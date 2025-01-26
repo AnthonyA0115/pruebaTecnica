@@ -1,0 +1,9 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{titulo}}</ion-title>
+    <ion-buttons slot="end" style="margin-right: 15px;">
+      <ion-icon *ngIf="!paletteToggle" name="sunny-outline" slot="end" (click)="toggleChange(true)"></ion-icon>
+      <ion-icon *ngIf="paletteToggle" name="star" slot="end" (click)="toggleChange(false)"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>

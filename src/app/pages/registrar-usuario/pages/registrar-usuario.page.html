@@ -1,0 +1,60 @@
+<app-header titulo="Registrar Usuario"></app-header>
+
+<ion-content>
+  <ion-card class="form-container">
+    <form [formGroup]="registroForm" (ngSubmit)="registrarUsuario()">
+
+      <ion-item>
+        <ion-label position="stacked">Documento</ion-label>
+        <ion-input
+          type="text"
+          formControlName="documento"
+          placeholder="Ingresa el documento"
+        ></ion-input>
+      </ion-item>
+      <ion-text color="danger" *ngIf="registroForm.get('documento')?.touched && registroForm.get('documento')?.invalid">
+        <small *ngIf="registroForm.get('documento')?.hasError('required')">
+          El documento es obligatorio.
+        </small>
+      </ion-text>
+
+      <ion-item>
+        <ion-label position="stacked">Nombre</ion-label>
+        <ion-input
+          type="text"
+          formControlName="nombre"
+          placeholder="Ingresa el nombre"
+        ></ion-input>
+      </ion-item>
+      <ion-text color="danger" *ngIf="registroForm.get('nombre')?.touched && registroForm.get('nombre')?.invalid">
+        <small *ngIf="registroForm.get('nombre')?.hasError('required')">
+          El nombre es obligatorio.
+        </small>
+        <small *ngIf="registroForm.get('nombre')?.hasError('minlength')">
+          El nombre debe tener al menos 3 caracteres.
+        </small>
+      </ion-text>
+
+      <ion-item>
+        <ion-label position="stacked">Correo</ion-label>
+        <ion-input
+          type="email"
+          formControlName="correo"
+          placeholder="Ingresa el correo"
+        ></ion-input>
+      </ion-item>
+      <ion-text color="danger" *ngIf="registroForm.get('correo')?.touched && registroForm.get('correo')?.invalid">
+        <small *ngIf="registroForm.get('correo')?.hasError('required')">
+          El correo es obligatorio.
+        </small>
+        <small *ngIf="registroForm.get('correo')?.hasError('email')">
+          Ingresa un correo válido.
+        </small>
+      </ion-text>
+
+      <ion-button  type="submit" [disabled]="registroForm.invalid">
+        Registrar Usuario
+      </ion-button>
+    </form>
+  </ion-card>
+</ion-content>

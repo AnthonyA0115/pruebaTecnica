@@ -1,0 +1,41 @@
+ion-title{
+    text-align: center;
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 95%;
+    padding: 10px;
+}
+
+/* Para pantallas grandes (Web) */
+@media (min-width: 768px) {
+    .form-container {
+        max-width: 600px;
+        width: 100%;
+        margin: 0 auto;
+    }
+}
+
+/* Para pantallas pequeñas (Móviles) */
+@media (max-width: 768px) {
+    .form-container {
+        max-width: 100%;
+        padding: 10px;
+    }
+}
+
+ion-item {
+    margin-bottom: 16px;
+}
+
+ion-button {
+    margin-top: 16px;
+}
+
+form {
+    width: 75%;
+    text-align: center;
+}

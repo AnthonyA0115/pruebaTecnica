@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="cancel()">
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Lista de tareas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list class="cards-container">
+    <div *ngFor="let tarea of tareas">
+      <ion-card  *ngIf="tarea.FechaEliminacion == null" class="tarea-card">
+        <ion-card-header>
+          <ion-card-title>{{ tarea.Titulo }}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <p>Descripcion: {{ tarea.Descripcion }}</p>
+          <p>Estado: {{ tarea.Estado }}</p>
+          <p><strong>Fecha Límite:</strong> {{ tarea.FechaLimite | date: 'shortDate' }}</p>
+          <ion-button expand="block" (click)="CambiarEstado(tarea.Id)">Cambiar estado</ion-button>
+          <ion-button expand="block" (click)="eliminarTarea(tarea.Id)">borrar tarea</ion-button>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </ion-list>
+</ion-content>

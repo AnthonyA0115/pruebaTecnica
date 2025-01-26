@@ -1,0 +1,16 @@
+<app-header titulo="Usuarios Activos"></app-header>
+
+<ion-content>
+  <ion-list class="cards-container">
+    <ion-card *ngFor="let usuario of usuarios">
+      <ion-card-header>
+        <ion-card-title>{{ usuario.Nombre }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>Correo: {{ usuario.Correo }}</p>
+        <ion-button expand="block" (click)="verTareas(usuario.Id)">Ver Tareas</ion-button>
+        <ion-button color="secondary" expand="block" (click)="crearTarea(usuario.Id)">Añadir Tarea</ion-button>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+</ion-content>

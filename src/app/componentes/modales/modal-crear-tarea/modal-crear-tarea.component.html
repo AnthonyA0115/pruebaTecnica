@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="cancel()">
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Crear tarea</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <form [formGroup]="crearTareaForm" (ngSubmit)="crearTarea()">
+      <!-- Campo: Título -->
+      <ion-item>
+        <ion-label position="stacked">Título</ion-label>
+        <ion-input
+          type="text"
+          formControlName="titulo"
+          placeholder="Ingresa el título de la tarea"
+        ></ion-input>
+      </ion-item>
+      <ion-text color="danger" *ngIf="crearTareaForm.get('titulo')?.touched && crearTareaForm.get('titulo')?.invalid">
+        <small *ngIf="crearTareaForm.get('titulo')?.hasError('required')">
+          El título es obligatorio.
+        </small>
+        <small *ngIf="crearTareaForm.get('titulo')?.hasError('minlength')">
+          El título debe tener al menos 5 caracteres.
+        </small>
+      </ion-text>
+    
+      <!-- Campo: Descripción -->
+      <ion-item>
+        <ion-label position="stacked">Descripción</ion-label>
+        <ion-textarea
+          formControlName="descripcion"
+          placeholder="Ingresa una descripción detallada"
+        ></ion-textarea>
+      </ion-item>
+      <ion-text color="danger" *ngIf="crearTareaForm.get('descripcion')?.touched && crearTareaForm.get('descripcion')?.invalid">
+        <small *ngIf="crearTareaForm.get('descripcion')?.hasError('required')">
+          La descripción es obligatoria.
+        </small>
+      </ion-text>
+    
+      <!-- Campo: Fecha límite -->
+      <ion-item>
+        <ion-label position="stacked">Fecha Límite</ion-label>
+        <ion-datetime
+          formControlName="fechaLimite"
+          placeholder="Selecciona la fecha límite"
+        ></ion-datetime>
+      </ion-item>
+      <ion-text color="danger" *ngIf="crearTareaForm.get('fechaLimite')?.touched && crearTareaForm.get('fechaLimite')?.invalid">
+        <small *ngIf="crearTareaForm.get('fechaLimite')?.hasError('required')">
+          La fecha límite es obligatoria.
+        </small>
+      </ion-text>
+    
+      <!-- Botón para Crear Tarea -->
+      <ion-button expand="full" type="submit" [disabled]="crearTareaForm.invalid">
+        Crear tarea
+      </ion-button>
+    </form>
+</ion-content>
